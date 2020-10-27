@@ -5,7 +5,7 @@ package users;
 import "google/api/annotations.proto";
 
 service Users {
-  rpc CreteUser (User) returns (UserState) {
+  rpc CreateUser (User) returns (UserState) {
     option (google.api.http) = {
       post: "/v1/users"
       body: "*"
