@@ -11,6 +11,12 @@ service Users {
       body: "*"
     };
   }
+
+  rpc GetUsers (Filter) returns (UsersList) {
+    option (google.api.http) = {
+      get: "/v1/users"
+    };
+  }
 }
 
 message User {
@@ -24,12 +30,20 @@ message User {
     string number = 1;
     CardType type = 2;
   }
+}
 
-  enum CardType {
-    VISA = 0;
-    MASTERCARD = 1;
-    MIR = 2;
-  }
+enum CardType {
+  VISA = 0;
+  MASTERCARD = 1;
+  MIR = 2;
+}
+
+message Filter {
+  CardType cardType = 1;
+}
+
+message UsersList {
+  repeated User users = 1;
 }
 
 message UserState {

@@ -12,6 +12,40 @@
   ],
   "paths": {
     "/v1/users": {
+      "get": {
+        "operationId": "Users_GetUsers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usersUsersList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cardType",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "VISA",
+              "MASTERCARD",
+              "MIR"
+            ],
+            "default": "VISA"
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      },
       "post": {
         "operationId": "Users_CreateUser",
         "responses": {
@@ -52,18 +86,9 @@
           "type": "string"
         },
         "type": {
-          "$ref": "#/definitions/UserCardType"
+          "$ref": "#/definitions/usersCardType"
         }
       }
-    },
-    "UserCardType": {
-      "type": "string",
-      "enum": [
-        "VISA",
-        "MASTERCARD",
-        "MIR"
-      ],
-      "default": "VISA"
     },
     "protobufAny": {
       "type": "object",
@@ -95,6 +120,15 @@
         }
       }
     },
+    "usersCardType": {
+      "type": "string",
+      "enum": [
+        "VISA",
+        "MASTERCARD",
+        "MIR"
+      ],
+      "default": "VISA"
+    },
     "usersUser": {
       "type": "object",
       "properties": {
@@ -124,6 +158,17 @@
       "properties": {
         "success": {
           "type": "boolean"
+        }
+      }
+    },
+    "usersUsersList": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/usersUser"
+          }
         }
       }
     }
