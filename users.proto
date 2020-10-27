@@ -14,15 +14,15 @@ service Users {
 }
 
 message User {
-  string Email = 1;
-  string FirstName = 2;
-  string LastName = 3;
-  int32 Age = 4;
-  repeated Card Cards = 5;
+  string email = 1;
+  string firstName = 2;
+  string lastName = 3;
+  int32 age = 4;
+  repeated Card cards = 5;
 
   message Card {
-    string Number = 1;
-    CardType Type = 2;
+    string number = 1;
+    CardType type = 2;
   }
 
   enum CardType {
@@ -33,5 +33,5 @@ message User {
 }
 
 message UserState {
-  bool Success = 1;
+  bool success = 1;
 }

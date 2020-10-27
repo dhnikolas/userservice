@@ -48,10 +48,10 @@
     "UserCard": {
       "type": "object",
       "properties": {
-        "Number": {
+        "number": {
           "type": "string"
         },
-        "Type": {
+        "type": {
           "$ref": "#/definitions/UserCardType"
         }
       }
@@ -98,20 +98,20 @@
     "usersUser": {
       "type": "object",
       "properties": {
-        "Email": {
+        "email": {
           "type": "string"
         },
-        "FirstName": {
+        "firstName": {
           "type": "string"
         },
-        "LastName": {
+        "lastName": {
           "type": "string"
         },
-        "Age": {
+        "age": {
           "type": "integer",
           "format": "int32"
         },
-        "Cards": {
+        "cards": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/UserCard"
@@ -122,7 +122,7 @@
     "usersUserState": {
       "type": "object",
       "properties": {
-        "Success": {
+        "success": {
           "type": "boolean"
         }
       }
