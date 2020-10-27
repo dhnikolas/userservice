@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "users.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/users": {
+      "post": {
+        "operationId": "Users_CreteUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/usersUserState"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/usersUser"
+            }
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "UserCard": {
+      "type": "object",
+      "properties": {
+        "Number": {
+          "type": "string"
+        },
+        "Type": {
+          "$ref": "#/definitions/UserCardType"
+        }
+      }
+    },
+    "UserCardType": {
+      "type": "string",
+      "enum": [
+        "VISA",
+        "MASTERCARD",
+        "MIR"
+      ],
+      "default": "VISA"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "usersUser": {
+      "type": "object",
+      "properties": {
+        "Email": {
+          "type": "string"
+        },
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Age": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "Cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserCard"
+          }
+        }
+      }
+    },
+    "usersUserState": {
+      "type": "object",
+      "properties": {
+        "Success": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
